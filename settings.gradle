@@ -1,3 +1,4 @@
+include ':stub'
 include ':protos'
 include ':app'
 rootProject.name = "GRPC Examples"
