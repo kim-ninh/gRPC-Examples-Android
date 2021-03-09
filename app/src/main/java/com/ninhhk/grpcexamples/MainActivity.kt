@@ -7,8 +7,8 @@ import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.ninhhk.grpcexamples.databinding.ActivityMainBinding
-import com.ninhhk.protos.GreeterGrpcKt
-import com.ninhhk.protos.HelloRequest
+import io.grpc.examples.helloworld.GreeterGrpcKt
+import io.grpc.examples.helloworld.HelloRequest
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
 import kotlinx.coroutines.Dispatchers
@@ -55,8 +55,7 @@ class MainActivity : AppCompatActivity() {
                     val request =
                         HelloRequest.newBuilder().setName(editTextName.text.toString()).build()
                     val response = greeter.sayHello(request)
-                    val againResponse = greeter.sayHelloAgain(request)
-                    val message = "${response.message}\n${againResponse.message}"
+                    val message = "${response.message}\n"
                     textViewResponse.text = message
                 } catch (e: Exception) {
                     textViewResponse.text = e.message
